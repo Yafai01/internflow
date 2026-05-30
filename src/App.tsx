@@ -16,7 +16,7 @@ function App() {
         await seedDatabase();
 
         // Restore user session if persisted
-        const savedUser = localStorage.getItem('jg_intern_user');
+        const savedUser = localStorage.getItem('internflow_user');
         if (savedUser) {
           setCurrentUser(JSON.parse(savedUser));
         }
@@ -32,17 +32,17 @@ function App() {
 
   const handleLoginSuccess = (user: Intern) => {
     setCurrentUser(user);
-    localStorage.setItem('jg_intern_user', JSON.stringify(user));
+    localStorage.setItem('internflow_user', JSON.stringify(user));
   };
 
   const handleLogout = () => {
     setCurrentUser(null);
-    localStorage.removeItem('jg_intern_user');
+    localStorage.removeItem('internflow_user');
   };
 
   const handleUserUpdate = (updatedUser: Intern) => {
     setCurrentUser(updatedUser);
-    localStorage.setItem('jg_intern_user', JSON.stringify(updatedUser));
+    localStorage.setItem('internflow_user', JSON.stringify(updatedUser));
   };
 
   if (loading) {

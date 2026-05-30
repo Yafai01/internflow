@@ -120,28 +120,28 @@ export async function seedDatabase() {
     const interns = [
       {
         name: 'Jane Ngo',
-        email: 'admin123@jg-corporation.com',
+        email: 'admin123@internflow.com',
         password: 'admin123',
         type: 1 as const, // Admin
         join_date: '2022-01-01',
       },
       {
         name: 'Hiro Taro',
-        email: 'hirotaro@jg-corporation.com',
+        email: 'hirotaro@internflow.com',
         password: 'beiti123',
         type: 2 as const, // Intern
         join_date: '2022-05-23',
       },
       {
         name: 'Takahiro Nakanishi',
-        email: 'nakanishi@jg-corporation.com',
+        email: 'nakanishi@internflow.com',
         password: 'phongnguyen123',
         type: 2 as const, // Intern
         join_date: '2022-05-23',
       },
       {
         name: 'Ai Tanaka',
-        email: 'aitanaka123@jg-corporation.com',
+        email: 'aitanaka123@internflow.com',
         password: 'tanaka123',
         type: 2 as const, // Intern
         join_date: '2022-05-23',

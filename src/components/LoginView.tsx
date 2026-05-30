@@ -46,7 +46,7 @@ export default function LoginView({ onLoginSuccess }: LoginViewProps) {
     <div className="login-container">
       <div className="login-card">
         <div className="login-logo">
-          <span>JG CORP</span>
+          <span>INTERNFLOW</span>
         </div>
         <p className="login-subtitle">Internship Portal Management</p>
 
@@ -120,14 +120,14 @@ export default function LoginView({ onLoginSuccess }: LoginViewProps) {
             <div>
               <span style={{ color: 'var(--accent-cyan)' }}>Admin:</span>
               <br />
-              admin123@jg-corporation.com
+              admin123@internflow.com
               <br />
               Pass: admin123
             </div>
             <div>
               <span style={{ color: 'var(--primary)' }}>Intern:</span>
               <br />
-              hirotaro@jg-corporation.com
+              hirotaro@internflow.com
               <br />
               Pass: beiti123
             </div>

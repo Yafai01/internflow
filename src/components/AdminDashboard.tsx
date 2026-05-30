@@ -766,7 +766,7 @@ export default function AdminDashboard({ adminUser, onLogout }: AdminDashboardPr
                     <input
                       type="email"
                       className="form-input"
-                      placeholder="jane.doe@jg-corporation.com"
+                      placeholder="jane.doe@internflow.com"
                       value={newInternEmail}
                       onChange={(e) => setNewInternEmail(e.target.value)}
                       required
