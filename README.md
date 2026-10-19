@@ -1,73 +1,68 @@
-# React + TypeScript + Vite
+# InternFlow
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+InternFlow is a browser-based internship management dashboard built with React, TypeScript, and Vite. Administrators create intern profiles, assign them to internship programs, and manage their tasks; interns sign in to a personal Kanban-style task board and update task status as they work. All data is stored locally in the browser using IndexedDB (via Dexie), so the app runs without a backend.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **Role-based login** – separate Admin and Intern views; the session is persisted in `localStorage`.
+- **Admin dashboard**
+  - Summary cards: total interns, active program streams, average progress, pending tasks.
+  - Intern table with search (name/email), program and status filters, and sortable columns.
+  - Create and remove intern profiles (removing an intern also deletes their programs and tasks).
+  - Assign a program (type, start/end dates) and add or delete tasks per intern.
+  - Settings page to add, remove, and toggle program types and task statuses.
+- **Intern dashboard**
+  - Kanban task board with one column per status; move tasks by drag-and-drop or quick-action buttons.
+  - Program progress bar, recalculated automatically from task status.
+  - Profile settings page for updating account details.
+- **Local persistence** – IndexedDB database seeded on first run with default statuses, program types, and demo users.
 
-## React Compiler
+## Tech stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React 19 + TypeScript
+- Vite
+- Dexie / dexie-react-hooks (IndexedDB)
+- lucide-react (icons)
+- ESLint
 
-## Expanding the ESLint configuration
+## Getting started
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Prerequisites
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- Node.js (a recent LTS release) and npm
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Install and run
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Then open the URL printed by Vite (default `http://localhost:5173`).
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Available scripts
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+| Command           | Description                              |
+| ----------------- | ---------------------------------------- |
+| `npm run dev`     | Start the Vite development server        |
+| `npm run build`   | Type-check and build for production      |
+| `npm run preview` | Preview the production build locally     |
+| `npm run lint`    | Run ESLint                               |
+
+### Demo accounts
+
+The database is seeded with demo users on first load; the credentials are shown on the login screen (e.g. admin: `admin123@internflow.com` / `admin123`). These are local demo accounts only.
+
+> Note: authentication is client-side and data lives in the browser's IndexedDB. This project is a front-end prototype and is not intended for storing real user data.
+
+## Project structure
+
+```
+src/
+  App.tsx                      # Session handling and role-based routing
+  db.ts                        # Dexie schema, seed data, progress calculation
+  components/
+    LoginView.tsx              # Login screen
+    AdminDashboard.tsx         # Admin board and settings
+    InternDashboard.tsx        # Intern task board and profile
 ```
