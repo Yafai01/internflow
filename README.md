@@ -2,6 +2,8 @@
 
 InternFlow is a browser-based internship management dashboard built with React, TypeScript, and Vite. Administrators create intern profiles, assign them to internship programs, and manage their tasks; interns sign in to a personal Kanban-style task board and update task status as they work. All data is stored locally in the browser using IndexedDB (via Dexie), so the app runs without a backend.
 
+**Live demo:** https://internflow-ten.vercel.app
+
 ## Features
 
 - **Role-based login** – separate Admin and Intern views; the session is persisted in `localStorage`.
